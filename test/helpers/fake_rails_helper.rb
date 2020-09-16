@@ -21,10 +21,6 @@ module FakeRailsHelper
     end
   end
 
-  def self.env
-    FakeRailsEnv.new(env: 'development')
-  end
-
   class FakeRails
     def self.root
       FakeRailsRoot.new

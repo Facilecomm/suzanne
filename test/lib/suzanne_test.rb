@@ -78,6 +78,26 @@ class SuzanneTest < Minitest::Test
     end
   end
 
+  def test_raises_if_file_does_not_exists
+    Suzanne::Env.stubs(
+      rails: FakeDevRails,
+      root_relative_config_file_path: ['config', 'no_such_file.yml']
+    )
+    assert_raises Suzanne::Env::NoConfigFileFound do
+      Suzanne.env
+    end
+  end
+
+  def test_raises_if_file_cannot_be_parsed
+    Suzanne::Env.stubs(
+      rails: FakeDevRails,
+      root_relative_config_file_path: ['config', 'not_yaml.yml']
+    )
+    assert_raises Suzanne::Env::CouldNotParseConfigFile do
+      Suzanne.env
+    end
+  end
+
   def test_does_not_attempt_to_read_file_in_production
     Suzanne::Env.stubs(
       rails: FakeProdRails
