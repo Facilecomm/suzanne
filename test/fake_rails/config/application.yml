@@ -1,5 +1,6 @@
 development:
   super_secret_key: abcdef_dev
+  USER: 'sponge_bob'
 
 test:
   super_secret_key: abcdef_test

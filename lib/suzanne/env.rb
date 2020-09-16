@@ -12,6 +12,10 @@ module Suzanne
       Rails
     end
 
+    def self.root_relative_config_file_path
+      ['config', 'application.yml'].freeze
+    end
+
     def initialize
       init_config_hash
     end
@@ -67,7 +71,11 @@ module Suzanne
     end
 
     def config_file_path
-      rails.root.join('config', 'application.yml')
+      rails.root.join(*root_relative_config_file_path)
+    end
+
+    def root_relative_config_file_path
+      self.class.root_relative_config_file_path
     end
 
     def production?
