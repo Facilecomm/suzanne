@@ -1,27 +1,50 @@
 # Suzanne
 
-A striped-down version of [Figaro](https://github.com/laserlemon/figaro),
+A striped-down fork of [Figaro](https://github.com/laserlemon/figaro),
 allowing env variables to be managed through YAML files.
 
 Currently meant to be used within a Rails project. Currently, like Figaro,
-we assume that the config file is in 'config/application.yml'.
+we assume that the config file is in `config/application.yml`.
 
 
-## Installation
+## Suggested rails use
 
-Add this line to your application's Gemfile:
+Place you configuration file in `config/application.yml`.
+(Make sure it is not tracked by git.)
+
+Add this line to your application's `Gemfile`:
 
 ```ruby
-gem 'suzanne'
+# Gemfile
+gem 'suzanne', '~> 0.1', require: false
 ```
+At the very bottom of `config/application.rb`:
+```ruby
+require 'suzanne'
+Suzanne.env
+```
+Within your app:
+```ruby
+Suzanne.env.super_secret_key
+```
+(just like you would with Figaro.)
 
-And then execute:
+## Migrating from Figaro
+- Follow instructions in the section above (except you probably have a config file already).
+- Make sure you have a section named development (see section below).
+- Substitute "Suzanne" for "Figaro" everywhere in your code base. Hopefully this is safe.
+- Test
 
-    $ bundle install
+## Configuration file
+It should have a section for each environment (except production).
+There is no default section.
+```yaml
+development:
+  my_key: 'abcdef'
 
-Or install it yourself as:
-
-    $ gem install suzanne
+test:
+  my_aws_key: 'fedcba'
+```
 
 ## Usage
 
@@ -45,6 +68,14 @@ Suzanne.env.super_secret_key
 Suzanne.env.no_such_key
 => nil
 ```
+## Use a different a file path
+
+To be explained
+
+## Use outside Rails
+
+To be tested
+
 ## Development
 
 Run `bundle exec rake test` to run the tests.
@@ -52,7 +83,7 @@ Run `bundle exec rake test` to run the tests.
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Naming
-In case you are wondering about the gem name => [The_Marriage_of_Figaro] https://en.wikipedia.org/wiki/The_Marriage_of_Figaro_(play).
+In case you are wondering about the gem name => [The_Marriage_of_Figaro](https://en.wikipedia.org/wiki/The_Marriage_of_Figaro_(play)).
 
 ## Contributing
 
