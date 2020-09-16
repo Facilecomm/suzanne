@@ -4,7 +4,7 @@ require_relative 'lib/suzanne/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'suzanne'
-  spec.version       = SboAssertable::VERSION
+  spec.version       = Suzanne::VERSION
   spec.authors       = ['Shippingbo']
   spec.email         = ['tech@facilecomm.com']
 

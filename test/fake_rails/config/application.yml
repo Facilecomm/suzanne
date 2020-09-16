@@ -1,0 +1,5 @@
+development:
+  super_secret_key: abcdef_dev
+
+test:
+  super_secret_key: abcdef_test

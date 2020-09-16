@@ -1,6 +1,10 @@
 require "suzanne/version"
+require 'suzanne/env'
 
 module Suzanne
   class Error < StandardError; end
-  # Your code goes here...
+
+  def self.env
+    @env ||= Suzanne::Env.new.env
+  end
 end
