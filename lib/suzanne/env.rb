@@ -9,7 +9,7 @@ module Suzanne
     class CouldNotParseConfigFile < RuntimeError; end
 
     def self.rails
-      Rails
+      ::Rails
     end
 
     def self.root_relative_config_file_path

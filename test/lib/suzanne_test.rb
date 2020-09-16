@@ -21,6 +21,16 @@ class SuzanneTest < Minitest::Test
     Suzanne.env
   end
 
+  def test_rails_constant_be_initialized
+    error = assert_raises NameError do
+      Suzanne.env
+    end
+    assert_equal(
+      'uninitialized constant Rails',
+      error.message
+    )
+  end
+
   def test_can_retrieve_key
     Suzanne::Env.stubs rails: FakeDevRails
     assert_equal(

@@ -24,11 +24,9 @@ module Suzanne
     def respond_to?(method, *)
       key, punctuation = extract_key_from_method(method)
 
-      case punctuation
-      when '!' then key?(key) || super
-      when '?', nil then true
-      else super
-      end
+      return true if punctuation == '?'
+      return (key?(key) || super) if punctuation == '!'
+      true
     end
 
     private
@@ -38,21 +36,17 @@ module Suzanne
     def method_missing(method, *)
       key, punctuation = extract_key_from_method(method)
 
-      return get_value(key) unless punctuation
       return fetch_key!(key) if punctuation == '!'
       return !!send(key) if punctuation == '?'
-
-      super
+      get_value(key)
     end
 
     def respond_to_missing?(method, *)
       key, punctuation = extract_key_from_method(method)
 
-      return true unless punctuation
-      return true if punctuation == '?'
       return (key?(key) || super) if punctuation == '!'
-
-      super
+      return true if punctuation == '?'
+      true
     end
 
     def fetch_key!(key)
