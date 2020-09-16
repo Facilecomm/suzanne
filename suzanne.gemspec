@@ -2,6 +2,7 @@
 
 require_relative 'lib/suzanne/version'
 
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |spec|
   spec.name          = 'suzanne'
   spec.version       = Suzanne::VERSION
@@ -45,3 +46,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-performance', '~> 1.5'
   spec.add_development_dependency 'simplecov', '~> 0.18.5'
 end
+# rubocop:enable Metrics/BlockLength

@@ -39,8 +39,9 @@ module Suzanne
 
       return fetch_key!(key) if punctuation == '!'
       return !!send(key) if punctuation == '?'
-
-      get_value(key)
+      return get_value(key) if key && !punctuation
+    rescue NoMethodError
+      super
     end
 
     def respond_to_missing?(method, *)

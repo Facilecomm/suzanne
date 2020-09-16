@@ -116,7 +116,7 @@ class SuzanneTest < Minitest::Test
     Suzanne.env.some_key
   end
 
-  def test_read_off_ENV_in_production
+  def test_read_off_env_in_production
     Suzanne::Env.stubs(
       rails: FakeProdRails
     )
@@ -131,7 +131,7 @@ class SuzanneTest < Minitest::Test
     )
   end
 
-  def test_ENV_takes_priority_over_config_file_in_dev
+  def test_env_takes_priority_over_config_file_in_dev
     Suzanne::Env.stubs(
       rails: FakeDevRails,
       root_relative_config_file_path: ['config', 'application.yml']
