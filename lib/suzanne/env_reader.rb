@@ -26,6 +26,7 @@ module Suzanne
 
       return true if punctuation == '?'
       return (key?(key) || super) if punctuation == '!'
+
       true
     end
 
@@ -38,6 +39,7 @@ module Suzanne
 
       return fetch_key!(key) if punctuation == '!'
       return !!send(key) if punctuation == '?'
+
       get_value(key)
     end
 
@@ -46,6 +48,7 @@ module Suzanne
 
       return (key?(key) || super) if punctuation == '!'
       return true if punctuation == '?'
+
       true
     end
 

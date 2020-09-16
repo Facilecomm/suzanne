@@ -145,7 +145,6 @@ class SuzanneTest < Minitest::Test
       ENV['USER'],
       Suzanne.env.USER
     )
-
   end
 
   private
