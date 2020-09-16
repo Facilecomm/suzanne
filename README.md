@@ -40,7 +40,7 @@ It should have a section for each environment (except production).
 There is no default section.
 ```yaml
 development:
-  my_key: 'abcdef'
+  my_aws_key: 'abcdef'
 
 test:
   my_aws_key: 'fedcba'
