@@ -21,7 +21,7 @@ module Suzanne
         env_config_hash
       )
     rescue KeyError
-      raise NoSegmentFound, "No segment found for #{rails.env.to_s}."
+      raise NoSegmentFound, "No segment found for #{rails.env}."
     end
 
     private
@@ -47,7 +47,7 @@ module Suzanne
         rails.env.to_s
       )
     rescue KeyError
-      raise NoSegmentFound, "No segment found for #{rails.env.to_s}."
+      raise NoSegmentFound, "No segment found for #{rails.env}."
     end
 
     def check_config_file_exists

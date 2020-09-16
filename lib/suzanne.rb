@@ -1,4 +1,6 @@
-require "suzanne/version"
+# frozen_string_literal: true
+
+require 'suzanne/version'
 require 'suzanne/env'
 
 module Suzanne
